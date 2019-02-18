@@ -15,6 +15,7 @@ function form_fail($safe_input, $form) {
 $form = [
     'fields' => [
         'team_name' => [
+            'label' => '',
             'type' => 'text',
             'placeholder' => 'Team name',
             'validate' => [
