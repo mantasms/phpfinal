@@ -29,7 +29,7 @@ function validate_form($input, &$form) {
     foreach ($form['fields'] as $field_id => &$field) {
         foreach ($field['validate'] as $validator) {
             if (is_callable($validator)) {
-                if (!$validator($input[$field_id], $field)) {
+                if (!$validator($input[$field_id], $field, $input)) {
                     $success = false;
                     break;
                 }
@@ -71,7 +71,7 @@ function validate_form($input, &$form) {
  * @param array $field $form Field
  * @return boolean
  */
-function validate_not_empty($field_input, &$field) {
+function validate_not_empty($field_input, &$field, $input) {
     if (strlen($field_input) == 0) {
         $field['error_msg'] = strtr('Jobans/a tu buhurs/gazele, '
                 . 'kad palikai @field tuscia!', ['@field' => $field['label']
@@ -88,7 +88,7 @@ function validate_not_empty($field_input, &$field) {
  * @param array $field $form Field
  * @return boolean
  */
-function validate_is_number($field_input, &$field) {
+function validate_is_number($field_input, &$field , $input) {
     if (!is_numeric($field_input)) {
         $field['error_msg'] = strtr('Jobans/a tu buhurs/gazele, '
                 . 'nes @field nera skaicius!', ['@field' => $field['label']

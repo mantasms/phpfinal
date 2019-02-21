@@ -1,2 +1,1 @@
-# call_friday
-Call Friday
+# Project PZDABALL
